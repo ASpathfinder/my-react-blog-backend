@@ -54,4 +54,16 @@ class User(sa.Model):
     role_id = Column(ForeignKey('roles.id'))
 
     role = relationship('Role', back_populates='users', lazy='joined')
+    posts = relationship('Post', back_populates='author', lazy='dynamic')
 
+
+class Post(sa.Model):
+    __tablename__ = 'posts'
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String(50))
+    body = Column(LONGTEXT)
+
+    user_id = Column(ForeignKey('users.id'))
+
+    author = relationship('User', back_populates='posts', lazy='joined')
