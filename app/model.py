@@ -64,6 +64,6 @@ class Post(sa.Model):
     title = Column(String(50))
     body = Column(LONGTEXT)
 
-    user_id = Column(ForeignKey('users.id'))
+    author_id = Column(ForeignKey('users.id'))
 
     author = relationship('User', back_populates='posts', lazy='joined')

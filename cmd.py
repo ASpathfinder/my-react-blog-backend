@@ -36,7 +36,7 @@ def init():
 def generate_posts(n):
     admin_id = sa.session.query(User.id).join(Role).filter(Role.name == 'admin').scalar()
     for i in range(n):
-        sa.session.add(Post(title='#{} Post Title'.format(i+1), body='This is a post body', user_id=admin_id))
+        sa.session.add(Post(title='#{} Post Title'.format(i+1), body='This is a post body', author_id=admin_id))
 
     sa.session.commit()
 
