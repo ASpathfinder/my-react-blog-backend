@@ -62,6 +62,7 @@ class Post(sa.Model):
 
     id = Column(Integer, primary_key=True)
     title = Column(String(50))
+    description = Column(String(100))
     body = Column(LONGTEXT)
 
     author_id = Column(ForeignKey('users.id'))
